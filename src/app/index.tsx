@@ -1,7 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import CarList from "./src/components/CarList";
-import ShoppingCartButton from "./src/components/ShoppingCardButton";
+import CarList from "../components/CarList";
+import ShoppingCartButton from "../components/ShoppingCardButton";
+import { Link } from "expo-router";
 
 export default function App() {
   return (

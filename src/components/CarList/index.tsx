@@ -1,12 +1,13 @@
 import { Button, FlatList, Image, Platform, Text, View } from "react-native";
 import { Car } from "../../interfaces/Cart";
 import { useEffect, useState } from "react";
-import { getCars } from "../../api/getCars";
 import { getApiCars } from "./actions";
+import { useCarStore } from "../../store/car.store";
 
 export default function CarList() {
   const [cars, setCars] = useState<Car[]>([]);
   const [loading, setLoading] = useState(false);
+  const { addCar } = useCarStore();
 
   useEffect(() => {
     getApiCars(setCars, setLoading);
@@ -79,7 +80,13 @@ export default function CarList() {
               }}
             >
               <Text style={{ color: "#999", fontSize: 22 }}>{item.price}</Text>
-              <Button color={"#007bff"} title="Add to Cart" />
+              <Button
+                color={"#700"}
+                title="Add to Cart"
+                onPress={() => {
+                  addCar(item);
+                }}
+              />
             </View>
           </View>
         )}
